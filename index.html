@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F4E78">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="คีย์บิล">
+<meta name="application-name" content="คีย์บิล">
+<title>คีย์บิล — ห้องอาหาร TIH</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="180x180" href="icon.png">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon.png">
+<link rel="shortcut icon" href="icon.png">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1F4E78 0%, #2E75B6 100%);
+    color: white;
+    font-family: 'Sarabun', 'Tahoma', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+  }
+  .container { padding: 20px; }
+  .icon-box {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 20px;
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-box img { width: 100%; height: 100%; object-fit: contain; }
+  h1 { margin: 0 0 8px; font-size: 22px; font-weight: 700; }
+  .subtitle { font-size: 14px; opacity: 0.9; margin-bottom: 32px; }
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255,255,255,0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 16px;
+  }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  .loading { font-size: 14px; opacity: 0.85; }
+  .manual {
+    margin-top: 32px;
+    font-size: 13px;
+    opacity: 0.8;
+  }
+  .manual a {
+    color: white;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="icon-box"><img src="icon.png" alt="ห้องอาหาร TIH"></div>
+  <h1>🍽️ ห้องอาหาร TIH</h1>
+  <div class="subtitle">โรงพยาบาลไทยอินเตอร์เนชั่นแนล พะงัน</div>
+  <div class="spinner"></div>
+  <div class="loading">กำลังเปิดระบบคีย์บิล...</div>
+  <div class="manual">
+    หากไม่เปิดอัตโนมัติ <a id="manualLink" href="#">กดที่นี่</a>
+  </div>
+</div>
+<script>
+  // ⚠️ แก้ URL ตรงนี้ให้ตรงกับ Web App ของคุณ
+  var APP_URL = 'https://script.google.com/macros/s/AKfycbzoLqhcTw7oAFxxqb_grQ3-GvyJ8dI21RUGvL8C3MSFOvjU1aYs_dRSY2cbecVD3PaVqQ/exec?page=entry';
+
+  document.getElementById('manualLink').href = APP_URL;
+
+  // Redirect after page is fully loaded (so icon caches)
+  setTimeout(function() {
+    window.location.replace(APP_URL);
+  }, 800);
+</script>
+</body>
+</html>
