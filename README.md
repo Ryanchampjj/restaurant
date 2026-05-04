@@ -1,49 +1,104 @@
-# คีย์บิล — ห้องอาหาร TIH
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F4E78">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="คีย์บิล">
+<meta name="application-name" content="คีย์บิล">
+<title>คีย์บิล — ห้องอาหาร TIH</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="180x180" href="icon.png">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="icon.png">
+<link rel="apple-touch-icon" sizes="192x192" href="icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon.png">
+<link rel="shortcut icon" href="icon.png">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1F4E78 0%, #2E75B6 100%);
+    color: white;
+    font-family: 'Sarabun', 'Tahoma', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+  }
+  .container { padding: 24px; max-width: 420px; }
+  .icon-box {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 24px;
+    background: white;
+    border-radius: 26px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-box img { width: 100%; height: 100%; object-fit: contain; }
+  h1 { margin: 0 0 8px; font-size: 26px; font-weight: 700; }
+  .subtitle { font-size: 14px; opacity: 0.9; margin-bottom: 36px; line-height: 1.4; }
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+    margin-bottom: 12px;
+    background: white;
+    color: #1F4E78;
+    border: none;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.1s;
+    font-family: inherit;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: #ea580c;
+    color: white;
+  }
+  .install-hint {
+    margin-top: 28px;
+    font-size: 13px;
+    opacity: 0.85;
+    line-height: 1.5;
+    background: rgba(0,0,0,0.15);
+    padding: 14px;
+    border-radius: 10px;
+  }
+  .install-hint strong { color: #ffd55a; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="icon-box"><img src="icon.png" alt="ห้องอาหาร TIH"></div>
+  <h1>🍽️ ห้องอาหาร TIH</h1>
+  <div class="subtitle">โรงพยาบาลไทยอินเตอร์เนชั่นแนล พะงัน<br>ระบบคีย์บิลห้องอาหาร</div>
 
-หน้าเว็บไอคอนสำหรับระบบคีย์บิลห้องอาหาร โรงพยาบาลไทยอินเตอร์เนชั่นแนล พะงัน
+  <a href="https://script.google.com/macros/s/AKfycbzoLqhcTw7oAFxxqb_grQ3-GvyJ8dI21RUGvL8C3MSFOvjU1aYs_dRSY2cbecVD3PaVqQ/exec?page=entry" class="btn btn-primary">
+    ➕ คีย์บิลใหม่
+  </a>
+  <a href="https://script.google.com/macros/s/AKfycbzoLqhcTw7oAFxxqb_grQ3-GvyJ8dI21RUGvL8C3MSFOvjU1aYs_dRSY2cbecVD3PaVqQ/exec?page=search" class="btn">
+    🔍 ค้นหายอดผู้ป่วย
+  </a>
 
-## วิธีติดตั้ง (สำหรับเจ้าของระบบ)
-
-### 1. สร้าง GitHub Repository
-
-1. สมัคร GitHub ที่ https://github.com (ฟรี)
-2. กด **New repository**
-3. ชื่อ repo: `tih-restaurant` (หรืออะไรก็ได้)
-4. เลือก **Public**
-5. กด **Create repository**
-
-### 2. อัพโหลดไฟล์
-
-อัพโหลด 4 ไฟล์เข้า repo:
-
-- `index.html`
-- `manifest.json`
-- `icon.png` ← ดาวน์โหลดไอคอนจาก Google Drive ของคุณ → ตั้งชื่อเป็น `icon.png`
-- `README.md` (ไฟล์นี้)
-
-วิธีอัพ: กด **Add file → Upload files** → ลากไฟล์ทั้งหมดมาวาง → **Commit changes**
-
-### 3. เปิด GitHub Pages
-
-1. ใน repo → **Settings** → **Pages**
-2. **Source**: Deploy from branch
-3. **Branch**: `main` / `(root)` → **Save**
-4. รอ 1-2 นาที จะได้ URL: `https://USERNAME.github.io/tih-restaurant/`
-
-### 4. ติดตั้งบนมือถือ
-
-เปิด URL ใน Chrome/Safari → "เพิ่มลงในหน้าจอหลัก" → ไอคอนจะขึ้นถูกต้อง 100%
-
-กดไอคอน → หน้าโหลด → redirect ไป Apps Script อัตโนมัติ
-
----
-
-## แก้ URL Apps Script
-
-ในไฟล์ `index.html` หาบรรทัดนี้:
-
-```js
-var APP_URL = 'https://script.google.com/macros/s/.../exec?page=entry';
-```
-
-เปลี่ยนเป็น URL Web App ของคุณ (ถ้า deploy ใหม่)
+  <div class="install-hint">
+    💡 <strong>ติดตั้งเป็นแอพ:</strong><br>
+    Android: กด ⋮ → "เพิ่มลงในหน้าจอหลัก"<br>
+    iPhone: กดปุ่มแชร์ → "เพิ่มลงในหน้าจอโฮม"
+  </div>
+</div>
+</body>
+</html>
