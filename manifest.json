@@ -1,15 +1,31 @@
 {
-  "name": "คิวงานคนขับ — Thai International Hospital",
-  "short_name": "คิวงานคนขับ",
-  "description": "ระบบขอใช้รถ — คิวงานสำหรับ พขร (คนขับ) รพ.ไทยอินเตอร์ เกาะพะงัน",
-  "start_url": "./index.html",
+  "name": "คีย์บิล — ห้องอาหาร TIH",
+  "short_name": "คีย์บิล",
+  "description": "ระบบคีย์บิลห้องอาหาร โรงพยาบาลไทยอินเตอร์เนชั่นแนล พะงัน",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#000000",
-  "theme_color": "#0e0e10",
+  "background_color": "#1F4E78",
+  "theme_color": "#1F4E78",
   "icons": [
-    { "src": "icon.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
