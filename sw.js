@@ -1,29 +1,39 @@
-var CACHE = 'tih-portal-v3';
-var ASSETS = ['./', './index.html', './manifest.json', './icon.png'];
-self.addEventListener('install', function(e){
-  e.waitUntil(caches.open(CACHE).then(function(c){ return c.addAll(ASSETS).catch(function(){}); }));
+// Service Worker — คีย์บิล ห้องอาหาร TIH (PWA offline caching)
+const CACHE_NAME = 'tih-kitchen-v1';
+const ASSETS = [
+  './',
+  './index.html',
+  './manifest.json',
+  './icon.png'
+];
+
+// ติดตั้ง — โหลดไฟล์เข้า cache
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
+  );
   self.skipWaiting();
 });
-self.addEventListener('activate', function(e){
-  e.waitUntil(
-    caches.keys().then(function(keys){
-      return Promise.all(keys.map(function(k){ if(k!==CACHE) return caches.delete(k); }));
-    }).then(function(){ return self.clients.claim(); })
+
+// เปิดใช้งาน — ลบ cache เก่า
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys => Promise.all(
+      keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
+    ))
   );
+  self.clients.claim();
 });
-self.addEventListener('fetch', function(e){
-  var req = e.request;
-  // network-first for page navigations (HTML) so updates show immediately
-  if (req.mode === 'navigate' || (req.headers.get('accept')||'').indexOf('text/html') !== -1) {
-    e.respondWith(
-      fetch(req).then(function(res){
-        var copy = res.clone();
-        caches.open(CACHE).then(function(c){ c.put(req, copy).catch(function(){}); });
-        return res;
-      }).catch(function(){ return caches.match(req).then(function(r){ return r || caches.match('./index.html'); }); })
-    );
-    return;
+
+// รับ request — ข้ามการ cache สำหรับ Google Apps Script (ต้องใช้ข้อมูลสด)
+self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+  if (url.hostname.includes('script.google.com') ||
+      url.hostname.includes('googleusercontent.com') ||
+      url.hostname.includes('google.com')) {
+    return; // ปล่อยให้ browser จัดการเอง — ไม่ cache
   }
-  // cache-first for static assets
-  e.respondWith(caches.match(req).then(function(r){ return r || fetch(req); }).catch(function(){ return fetch(req); }));
+  event.respondWith(
+    caches.match(event.request).then(cached => cached || fetch(event.request))
+  );
 });
